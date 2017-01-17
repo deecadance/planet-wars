@@ -24,6 +24,8 @@ import matplotlib.pyplot as plt
 GAMES = 1000
 # Number of planets in the field
 NUM_PLANETS = 6
+# Maximum number of turns
+MAX_TURNS = 100
 
 # The player we'll observe
 player = rand.Bot()
@@ -43,7 +45,8 @@ for g in range(GAMES):
 
         move = player.get_move(state)
         state = state.next(move)
-
+        if state.turn_nr() > MAX_TURNS :
+            break
     winner = state.winner()
 
     for state_vector in state_vectors:
